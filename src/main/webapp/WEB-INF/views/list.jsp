@@ -25,6 +25,7 @@
 		});
 	}
 	function goPage(pg){
+		alert(pg);
 		$("input[name=nowPage]").val(pg);
 		searchList();
 	}
