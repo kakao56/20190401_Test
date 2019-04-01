@@ -13,6 +13,7 @@
 		
 	});
 	function searchList(){
+		alert($("input[name=nowPage]").val());
 		$.ajax({
 			url: "searchlist"
 			,type: "post"
@@ -25,7 +26,6 @@
 		});
 	}
 	function goPage(pg){
-		alert(pg);
 		$("input[name=nowPage]").val(pg);
 		searchList();
 	}
