@@ -26,7 +26,7 @@
 </script>
 </head>
 <body onload="searchList()">
-<h1>자유게시판</h1>
+<h1>자유게시판11</h1>
 <div id="searchdv">
 	<form id="searchfrm">
 	</form>
