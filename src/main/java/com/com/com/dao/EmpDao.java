@@ -7,4 +7,6 @@ public interface EmpDao {
 
 	List<Map<String, Map<String, Object>>> getList(Map<String, Object> map);
 
+	int getTotalCount(Map<String, Object> map);
+
 }

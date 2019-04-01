@@ -17,6 +17,13 @@ public class EmpDaoImpl implements EmpDao{
 
 	@Override
 	public List<Map<String, Map<String, Object>>> getList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
 		return sst.selectList("mapper.getList",map);
+	}
+
+	@Override
+	public int getTotalCount(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mapper.getTotalCount",map);
 	}
 }

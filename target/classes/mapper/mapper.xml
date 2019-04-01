@@ -14,16 +14,51 @@
 		<result column="view_cnt" property="vCnt"/>
 	</resultMap>
 	
-	<select id="getList" resultMap="listMap">
-		select
-			seq
-			,mem_name
-			,mem_id
-			,board_subject
-			,board_content
-			,reg_date
-			,upt_date
-			,view_cnt		
+	<sql id="searchOption">
+		<if test="searchType !=null and searchType!='전체'">
+			<choose>
+				<when test="searchValue == '제목'">
+					and board_subject like '%'||#{searchValue}||'%'
+				</when>
+				<when test="searchValue == '내용'">
+					and board_content like '%'||#{searchValue}||'%'
+				</when>
+				<when test="searchValue == '아이디'">
+					and mem_id like '%'||#{searchValue}||'%'
+				</when>
+			</choose>
+		</if>
+	</sql>
+	
+	<select id="getList" parameterType="map" resultMap="listMap">
+		select *
+		from
+			(select 
+				rownum rnum
+				,a.*
+			form
+				(select
+					seq
+					,mem_name
+					,mem_id
+					,board_subject
+					,board_content
+					,reg_date
+					,upt_date
+					,view_cnt		
+				from board_study
+				where 1=1
+				<include refid="searchOption"></include>
+				order by 1) a)
+			where rnum between #{begin} and #{end}
+		
+	</select>
+	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select 
+			count(seq)
 		from board_study
+		where 1=1
+		<include refid="searchOption"></include>
 	</select>
 </mapper>

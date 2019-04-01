@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="<%=request.getContextPath() %>/resources/css/page.css" rel="stylesheet">
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/lib/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -23,12 +24,17 @@
 			}
 		});
 	}
+	function goPage(pg){
+		$("input[name=nowPage]").val(pg);
+		searchList();
+	}
 </script>
 </head>
 <body onload="searchList()">
 <h1>자유게시판11</h1>
 <div id="searchdv">
 	<form id="searchfrm">
+		<input type="hidden" name="nowPage">
 	</form>
 </div>
 <div id="listdv">
