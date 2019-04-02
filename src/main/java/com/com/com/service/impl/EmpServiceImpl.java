@@ -24,7 +24,7 @@ public class EmpServiceImpl implements EmpService{
 		
 		List<Map<String, Map<String, Object>>> list = null;
 		
-		if(map.get("nowPage") != null) {
+		if(map.get("nowPage") != null && map.get("nowPage") != "") {
 			nowPage = Integer.parseInt(map.get("nowPage").toString());
 		}else {
 			nowPage = 1;
